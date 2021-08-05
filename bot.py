@@ -35,13 +35,13 @@ bot = Client(
 @bot.on_message(filters.command("start") & ~filters.edited)
 async def start(_, message):
    if message.chat.type == 'private':
-       await message.reply("**Hey There, I'm a song downloader bot. A bot by @Infinity_Bots.\nUsage:** `/song [query]`",   
+       await message.reply("**Hey There, I'm a song downloader bot.Bot Maker Is Ominda. A bot by @sdbotworld.\nUsage:** `/song [query]`",   
                             reply_markup=InlineKeyboardMarkup(
                                 [[
                                         InlineKeyboardButton(
-                                            "Dev", url="https://t.me/Infinity_Bots"),
+                                            "Dev", url="https://t.me/omindas"),
                                         InlineKeyboardButton(
-                                            "Source", url="https://github.com/imjanindu/jesongbot")
+                                            "Source", url="https://github.com/omindadelshan/jesongbot")
                                     ]]
                             ))
    else:
