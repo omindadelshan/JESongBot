@@ -35,13 +35,19 @@ bot = Client(
 @bot.on_message(filters.command("start") & ~filters.edited)
 async def start(_, message):
    if message.chat.type == 'private':
-       await message.reply("**🔥Hey There,𝐈 𝐀𝐦 𝐏𝐨𝐰𝐞𝐫𝐟𝐮𝐥𝐥 𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐒𝐨𝐧𝐠 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐫 𝐁𝐨𝐭.🇱🇰 𝚈𝚘𝚞 𝙲𝚊𝚗 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍 𝚜𝚘𝚗𝚐 𝚒𝚜 𝚜𝚞𝚙𝚎𝚛 𝚚𝚞𝚊𝚕𝚒𝚝𝚢🔰.👨‍💻 𝑀𝑦 𝑀𝑎𝑠𝑡𝑒𝑟 𝐼𝑠 𝑂𝑚𝑖𝑛𝑑𝑎 👨‍💻. 💓𝑻𝒉𝒊𝒔 𝑩𝒐𝒕 𝒑𝒐𝒘𝒆𝒓𝒅 𝒃𝒚 @sdprojectupdates 🔥.\nUsage:** `/song [song name]`",   
+       await message.reply("**🔥Hey There,𝐈 𝐀𝐦 𝐏𝐨𝐰𝐞𝐫𝐟𝐮𝐥𝐥 𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐒𝐨𝐧𝐠 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐫 𝐁𝐨𝐭...🔥.𝐌𝐚𝐝𝐞 𝐁𝐲 𝐎𝐦𝐢𝐧𝐝𝐚...🔥🔥😋
+                           "🤖🔥 𝗛𝗼𝘄 𝗧𝗼 𝗨𝘀𝗲 𝗠𝗲 𝗘𝘅𝗮𝗺𝗽𝗹𝗲 👉👉 /song [song name]`",
+                           "ℙ𝕠𝕨𝕖𝕣𝕕 𝔹𝕪 💠@sdprojectupdates / @omindas...😋"
                             reply_markup=InlineKeyboardMarkup(
                                 [[
                                         InlineKeyboardButton(
-                                            "💥Dev💥", url="https://t.me/omindas"),
+                                            "🔥𝙳𝚎𝚟𝚎𝚕𝚘𝚙𝚎𝚛🔥", url="https://t.me/omindas"),
                                         InlineKeyboardButton(
-                                            "🔰channal🔰", url="https://t.me/sdprojectupdates")
+                                            "🤖 𝚄𝚙𝚍𝚊𝚝𝚎 𝙲𝚑𝚊𝚗𝚗𝚊𝚕", url="https://t.me/sdprojectupdates"),
+                                        InlineKeyboardButton(
+                                            "💠 𝚂𝚘𝚞𝚛𝚌𝚎 𝙲𝚘𝚍𝚎 💠", url="https://github.com/omindadelsha"),
+                                        InlineKeyboardButton(
+                                            "✳️ 𝙾𝚞𝚛 𝙼𝚘𝚛𝚎 𝚋𝚘𝚝𝚜✳️", url=https://t.me/BotFather"),
                                     ]]
                             ))
    else:
@@ -53,7 +59,7 @@ async def song(_, message):
     if len(message.command) < 2:
        return await message.reply("**Usage:**\n - `/song [query]`")
     query = message.text.split(None, 1)[1]
-    shed = await message.reply("🔎 Finding the song 🔎")
+    shed = await message.reply("🔎 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 𝐒𝐨𝐧𝐠 🔎")
     ydl_opts = {
        "format": "bestaudio[ext=m4a]",
        "geo-bypass": True,
@@ -80,18 +86,18 @@ async def song(_, message):
         )
         print(str(e))
         return
-    await shed.edit("📥 Downloading 📤")
+    await shed.edit("📩 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝐬𝐨𝐧𝐠 📩")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = "@sdprojectupddates"
+        rep = "✓@𝐨𝐦𝐢𝐧𝐝𝐚𝐬✓"
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        await shed.edit("📤 Uploading Ominda 📤")
+        await shed.edit("📤𝐔𝐩𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝐒𝐨𝐧𝐠 𝐁𝐲 𝐎𝐦𝐢𝐧𝐝𝐚📤")
         s = await message.reply_audio(audio_file, caption=rep, thumb=thumb_name, parse_mode='md', title=title, duration=dur, performer=channel)
         await shed.delete()
     except Exception as e:
